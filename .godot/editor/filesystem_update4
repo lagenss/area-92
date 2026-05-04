@@ -1,0 +1,8 @@
+res://prefabs/Speaker.tscn
+res://shaders/retro.gdshader
+res://scripts/speaker.gd
+res://scenes/LoseMenu.tscn
+res://scripts/menu/loading_screen.gd
+res://scenes/menu/LoadingScreen.tscn
+res://prefabs/Player.tscn
+res://scripts/shader.gd

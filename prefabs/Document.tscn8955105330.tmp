@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c8xf3pbiw1y0i"]
+
+[ext_resource type="Script" uid="uid://cnh1op087x2sl" path="res://scripts/document.gd" id="1_mroey"]
+[ext_resource type="Script" uid="uid://ckvrdjea1bpdu" path="res://scripts/interfaces/interactable.gd" id="2_mroey"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s3x7t"]
+load_path = "res://.godot/imported/document_instr_1_lr.png-30563d025f3cad6a81f7026a8dd203f0.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mxsvv"]
+resource_name = "Note"
+cull_mode = 2
+albedo_texture = SubResource("CompressedTexture2D_s3x7t")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qdtl7"]
+_surfaces = [{
+"aabb": AABB(-0.15, 0, -0.105, 0.3, 1e-05, 0.21),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Note",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_0jlet"]
+resource_name = "document_Plane"
+_surfaces = [{
+"aabb": AABB(-0.15, 0, -0.105, 0.3, 1e-05, 0.21),
+"attribute_data": PackedByteArray(6, 0, 6, 0, 248, 255, 248, 255, 6, 0, 248, 255, 248, 255, 6, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_mxsvv"),
+"name": "Note",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 84, 213, 255, 255, 0, 0, 0, 0, 84, 213, 255, 255, 0, 0, 255, 255, 84, 213, 0, 0, 0, 0, 0, 0, 84, 213, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42, 84, 213, 170, 42)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qdtl7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5ae6k"]
+size = Vector3(0.3022461, 0.008071899, 0.21252441)
+
+[node name="Document" type="Node3D" unique_id=2085948612]
+script = ExtResource("1_mroey")
+
+[node name="document" type="StaticBody3D" parent="." unique_id=1193719308]
+
+[node name="Plane" type="MeshInstance3D" parent="document" unique_id=1506494047]
+mesh = SubResource("ArrayMesh_0jlet")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="document" unique_id=1510559433]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00024414063, -0.0002670288, 6.1035156e-05)
+shape = SubResource("BoxShape3D_5ae6k")
+
+[node name="Interactable" type="Node" parent="document" unique_id=1474126724]
+unique_name_in_owner = true
+script = ExtResource("2_mroey")
+metadata/_custom_type_script = "uid://ckvrdjea1bpdu"

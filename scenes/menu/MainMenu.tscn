@@ -1,0 +1,184 @@
+[gd_scene format=3 uid="uid://b6c2bh6pvdi7x"]
+
+[ext_resource type="Script" uid="uid://y3wuq44yqsy4" path="res://scripts/menu/main_menu.gd" id="1_s3dsm"]
+[ext_resource type="Texture2D" uid="uid://bsietj6q0wr84" path="res://assets/textures/bgg2g.png" id="2_iv2fv"]
+[ext_resource type="Texture2D" uid="uid://nh42gjythl0c" path="res://assets/textures/area92.png" id="3_iv2fv"]
+[ext_resource type="PackedScene" uid="uid://c2iyvo8oribmd" path="res://scenes/menu/SettingsMenu.tscn" id="3_uwj7d"]
+[ext_resource type="PackedScene" uid="uid://cudmvv8ktmvgo" path="res://scenes/menu/ControlsMenu.tscn" id="4_2nud1"]
+[ext_resource type="Texture2D" uid="uid://ba0fu4sqxy0ay" path="res://assets/textures/buttons/play_normal.png" id="4_y6vun"]
+[ext_resource type="Texture2D" uid="uid://skb7qpcj2wcu" path="res://assets/textures/buttons/play_hover.png" id="5_e1dod"]
+[ext_resource type="BitMap" uid="uid://cdcvcyw2m1i3c" path="res://assets/textures/buttons/play_bitmap.png" id="6_riglq"]
+[ext_resource type="Texture2D" uid="uid://bjrs3jmfj68nt" path="res://assets/textures/buttons/settings_normal.png" id="6_u2yxo"]
+[ext_resource type="Texture2D" uid="uid://s2vqiuvlqido" path="res://assets/textures/buttons/settings_hover.png" id="7_riglq"]
+[ext_resource type="Texture2D" uid="uid://m4um4sisye5x" path="res://assets/textures/buttons/controls_normal.png" id="8_f3x3n"]
+[ext_resource type="BitMap" uid="uid://citg62cruscj0" path="res://assets/textures/buttons/settings_bitmap.png" id="9_f3x3n"]
+[ext_resource type="Texture2D" uid="uid://bscx00a5sundg" path="res://assets/textures/buttons/controls_hover.png" id="9_scuer"]
+[ext_resource type="Texture2D" uid="uid://d1qjfbxmr4xca" path="res://assets/textures/buttons/exit_normal.png" id="10_oq8re"]
+[ext_resource type="Texture2D" uid="uid://r1qk8fwilbb5" path="res://assets/textures/buttons/exit_hover.png" id="11_ddky8"]
+[ext_resource type="BitMap" uid="uid://du2ihia3og2tj" path="res://assets/textures/buttons/controls_bitmap.png" id="12_oq8re"]
+[ext_resource type="BitMap" uid="uid://b4wrwg8pybce5" path="res://assets/textures/buttons/exit_bitmap.png" id="15_ddky8"]
+[ext_resource type="AudioStream" uid="uid://b3hfcwl2mseyv" path="res://assets/sounds/button-hover-click.mp3" id="18_ddky8"]
+[ext_resource type="AudioStream" uid="uid://0yxat66c25hs" path="res://assets/sounds/static-white-noise.wav" id="19_h8wvk"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0ykhv"]
+
+[node name="MainMenu" type="Control" unique_id=864509569]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s3dsm")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1564952217]
+modulate = Color(0.942433, 0.9530439, 0.91863716, 1)
+self_modulate = Color(0.8175213, 0.8175213, 0.81752115, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_0ykhv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_iv2fv")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="MainMenuPanel" type="Panel" parent="." unique_id=1915980513]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.3
+anchor_bottom = 1.0
+offset_right = -0.14401245
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuPanel" unique_id=664743115]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="MenuBody" type="VBoxContainer" parent="MainMenuPanel/MarginContainer" unique_id=597141917]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="GameName" type="VBoxContainer" parent="MainMenuPanel/MarginContainer/MenuBody" unique_id=1147434670]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MainMenuPanel/MarginContainer/MenuBody/GameName" unique_id=1118393989]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="TextureRect" parent="MainMenuPanel/MarginContainer/MenuBody/GameName/Control" unique_id=37090098]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.77000004
+offset_top = 4.0
+offset_bottom = -21.980011
+texture = ExtResource("3_iv2fv")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MarginContainer" type="Control" parent="MainMenuPanel/MarginContainer/MenuBody" unique_id=263562746]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MainMenuButtons" type="VBoxContainer" parent="MainMenuPanel/MarginContainer/MenuBody/MarginContainer" unique_id=1570737071]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.11000001
+anchor_right = 0.77000004
+anchor_bottom = 0.96900004
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons" unique_id=577828164]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayButton" type="TextureButton" parent="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons" unique_id=1949055263]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("4_y6vun")
+texture_hover = ExtResource("5_e1dod")
+texture_click_mask = ExtResource("6_riglq")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SettingsButton" type="TextureButton" parent="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons" unique_id=892705696]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("6_u2yxo")
+texture_hover = ExtResource("7_riglq")
+texture_click_mask = ExtResource("9_f3x3n")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ControlsButton" type="TextureButton" parent="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons" unique_id=784035922]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("8_f3x3n")
+texture_hover = ExtResource("9_scuer")
+texture_click_mask = ExtResource("12_oq8re")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="ExitButton" type="TextureButton" parent="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons" unique_id=900369846]
+z_index = 1
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("10_oq8re")
+texture_hover = ExtResource("11_ddky8")
+texture_click_mask = ExtResource("15_ddky8")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SettingsMenu" parent="." unique_id=1567293546 instance=ExtResource("3_uwj7d")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="ControlsMenu" parent="." unique_id=1027087341 instance=ExtResource("4_2nud1")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="ButtonsSound" type="AudioStreamPlayer" parent="." unique_id=499892577]
+unique_name_in_owner = true
+stream = ExtResource("18_ddky8")
+volume_db = -18.0
+pitch_scale = 0.6
+
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=253446805]
+
+[node name="Noise" type="AudioStreamPlayer" parent="." unique_id=167053430]
+stream = ExtResource("19_h8wvk")
+volume_db = -30.0
+pitch_scale = 0.25
+
+[connection signal="pressed" from="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="pressed" from="MainMenuPanel/MarginContainer/MenuBody/MarginContainer/MainMenuButtons/ExitButton" to="." method="_on_exit_button_pressed"]

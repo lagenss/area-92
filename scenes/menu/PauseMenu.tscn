@@ -1,0 +1,171 @@
+[gd_scene format=3 uid="uid://xxa01hdnu4nj"]
+
+[ext_resource type="Script" uid="uid://cd512fxbxrb1o" path="res://scripts/menu/pause_menu.gd" id="1_xbkbr"]
+[ext_resource type="Texture2D" uid="uid://nh42gjythl0c" path="res://assets/textures/area92.png" id="2_5ht2y"]
+[ext_resource type="Texture2D" uid="uid://ba0fu4sqxy0ay" path="res://assets/textures/buttons/play_normal.png" id="2_khxpe"]
+[ext_resource type="PackedScene" uid="uid://c2iyvo8oribmd" path="res://scenes/menu/SettingsMenu.tscn" id="2_pjuoe"]
+[ext_resource type="Texture2D" uid="uid://skb7qpcj2wcu" path="res://assets/textures/buttons/play_hover.png" id="3_dlvbt"]
+[ext_resource type="PackedScene" uid="uid://cudmvv8ktmvgo" path="res://scenes/menu/ControlsMenu.tscn" id="3_dmujr"]
+[ext_resource type="BitMap" uid="uid://cdcvcyw2m1i3c" path="res://assets/textures/buttons/play_bitmap.png" id="4_pimv1"]
+[ext_resource type="Texture2D" uid="uid://bjrs3jmfj68nt" path="res://assets/textures/buttons/settings_normal.png" id="5_8e2ub"]
+[ext_resource type="Texture2D" uid="uid://s2vqiuvlqido" path="res://assets/textures/buttons/settings_hover.png" id="6_p4brg"]
+[ext_resource type="BitMap" uid="uid://citg62cruscj0" path="res://assets/textures/buttons/settings_bitmap.png" id="7_mi5od"]
+[ext_resource type="Texture2D" uid="uid://m4um4sisye5x" path="res://assets/textures/buttons/controls_normal.png" id="8_8e2ub"]
+[ext_resource type="Texture2D" uid="uid://bscx00a5sundg" path="res://assets/textures/buttons/controls_hover.png" id="9_p4brg"]
+[ext_resource type="BitMap" uid="uid://du2ihia3og2tj" path="res://assets/textures/buttons/controls_bitmap.png" id="10_mi5od"]
+[ext_resource type="Texture2D" uid="uid://d1qjfbxmr4xca" path="res://assets/textures/buttons/exit_normal.png" id="11_fqng6"]
+[ext_resource type="Texture2D" uid="uid://r1qk8fwilbb5" path="res://assets/textures/buttons/exit_hover.png" id="12_cfmmf"]
+[ext_resource type="BitMap" uid="uid://b4wrwg8pybce5" path="res://assets/textures/buttons/exit_bitmap.png" id="13_5ht2y"]
+[ext_resource type="AudioStream" uid="uid://b3hfcwl2mseyv" path="res://assets/sounds/button-hover-click.mp3" id="17_5ht2y"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pjuoe"]
+light_mode = 1
+
+[node name="PauseMenu" type="Control" unique_id=76372218]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xbkbr")
+
+[node name="Tint" type="ColorRect" parent="." unique_id=2074798278]
+modulate = Color(0.6156863, 0.6156863, 0.6156863, 0.24313726)
+z_index = -1
+material = SubResource("CanvasItemMaterial_pjuoe")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EscapeMenu" type="Panel" parent="." unique_id=681559799]
+process_mode = 3
+z_index = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.3
+anchor_bottom = 1.0
+offset_right = 0.2159729
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="EscapeMenu" unique_id=980477842]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="Content" type="VBoxContainer" parent="EscapeMenu/MarginContainer" unique_id=2017924423]
+layout_mode = 2
+
+[node name="PauseInfo" type="VBoxContainer" parent="EscapeMenu/MarginContainer/Content" unique_id=834460430]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="EscapeMenu/MarginContainer/Content/PauseInfo" unique_id=1408231708]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRext" type="TextureRect" parent="EscapeMenu/MarginContainer/Content/PauseInfo/Control" unique_id=1631335932]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.666
+offset_bottom = -0.13999939
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5ht2y")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MarginContainer" type="Control" parent="EscapeMenu/MarginContainer/Content" unique_id=699157143]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="EscapeMenu/MarginContainer/Content/MarginContainer" unique_id=1728836218]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.11
+anchor_right = 0.77
+anchor_bottom = 0.969
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons" unique_id=792634389]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Play" type="TextureButton" parent="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons" unique_id=2087256332]
+process_mode = 3
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_khxpe")
+texture_hover = ExtResource("3_dlvbt")
+texture_click_mask = ExtResource("4_pimv1")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Settings" type="TextureButton" parent="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons" unique_id=2018446857]
+process_mode = 3
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("5_8e2ub")
+texture_hover = ExtResource("6_p4brg")
+texture_click_mask = ExtResource("7_mi5od")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Controls" type="TextureButton" parent="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons" unique_id=1179209510]
+process_mode = 3
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("8_8e2ub")
+texture_hover = ExtResource("9_p4brg")
+texture_click_mask = ExtResource("10_mi5od")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Menu" type="TextureButton" parent="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons" unique_id=1611159751]
+process_mode = 3
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("11_fqng6")
+texture_hover = ExtResource("12_cfmmf")
+texture_click_mask = ExtResource("13_5ht2y")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="SettingsMenu" parent="." unique_id=1567293546 instance=ExtResource("2_pjuoe")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="ControlsMenu" parent="." unique_id=1027087341 instance=ExtResource("3_dmujr")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="ButtonsSound" type="AudioStreamPlayer" parent="." unique_id=39329635]
+unique_name_in_owner = true
+stream = ExtResource("17_5ht2y")
+volume_db = -18.0
+pitch_scale = 0.6
+
+[connection signal="pressed" from="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="EscapeMenu/MarginContainer/Content/MarginContainer/Buttons/Menu" to="." method="_on_menu_pressed"]

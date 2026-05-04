@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://c0hapq3rpoyud"]
+
+[ext_resource type="Script" uid="uid://daenxmjotbouq" path="res://scripts/player/player.gd" id="1_fjjwp"]
+[ext_resource type="Texture2D" uid="uid://cmot2hvlgflrn" path="res://assets/crossh_center.png" id="2_1nynx"]
+[ext_resource type="PackedScene" uid="uid://xxa01hdnu4nj" path="res://scenes/menu/PauseMenu.tscn" id="2_70wo7"]
+[ext_resource type="Script" uid="uid://8pk4aj3ani3r" path="res://scripts/player/components/movement_component.gd" id="2_glu7e"]
+[ext_resource type="Texture2D" uid="uid://xbt5ra6uosqa" path="res://assets/crossh_interact.png" id="3_64pgi"]
+[ext_resource type="Script" uid="uid://dyd3g6ow8aqp4" path="res://scripts/player/components/rotate_component.gd" id="3_ay6yh"]
+[ext_resource type="Script" uid="uid://dc8l4wxe54igm" path="res://scripts/player/components/component.gd" id="4_64pgi"]
+[ext_resource type="Script" uid="uid://co8ope6se27cy" path="res://scripts/player/components/wobble_component.gd" id="4_p3xyx"]
+[ext_resource type="Script" uid="uid://dql4esdn0tmgr" path="res://scripts/player/components/interact_component.gd" id="8_0ep8a"]
+[ext_resource type="Script" uid="uid://bn38dwrgtdkkd" path="res://scripts/player/components/inventory_component.gd" id="9_rwuho"]
+[ext_resource type="Script" uid="uid://7talccbcgaqj" path="res://scripts/player/components/equipment_component.gd" id="10_yhksc"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bl74i"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fjjwp"]
+radius = 0.3
+height = 1.8
+
+[node name="Player" type="CharacterBody3D" unique_id=797351770]
+script = ExtResource("1_fjjwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1374831431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_bl74i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1939475648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_fjjwp")
+
+[node name="Head" type="Node3D" parent="." unique_id=955852585]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4867326, 0)
+
+[node name="MainCamera" type="Camera3D" parent="Head" unique_id=1734717664]
+unique_name_in_owner = true
+
+[node name="InteractRaycast" type="RayCast3D" parent="Head/MainCamera" unique_id=1643894890]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+target_position = Vector3(0, -1.805, 0)
+collision_mask = 3
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=398483594]
+
+[node name="CrosshairHolder" type="Control" parent="UI" unique_id=1327300149]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CrossI" type="TextureRect" parent="UI/CrosshairHolder" unique_id=1341291863]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_1nynx")
+
+[node name="CrossC" type="TextureRect" parent="UI/CrosshairHolder" unique_id=2031038069]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_64pgi")
+
+[node name="InteractStatus" type="Label" parent="UI" unique_id=281171471]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 8.5
+offset_right = 20.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="Components" type="Node" parent="." unique_id=1050772825]
+script = ExtResource("4_64pgi")
+
+[node name="MovementComponent" type="Node" parent="Components" unique_id=1579565858]
+script = ExtResource("2_glu7e")
+
+[node name="RotateComponent" type="Node" parent="Components" unique_id=1900804039]
+script = ExtResource("3_ay6yh")
+
+[node name="WobbleComponent" type="Node" parent="Components" unique_id=601852493]
+script = ExtResource("4_p3xyx")
+
+[node name="InteractComponent" type="Node" parent="Components" unique_id=1781901376]
+script = ExtResource("8_0ep8a")
+
+[node name="InventoryComponent" type="Node" parent="Components" unique_id=1654005461]
+unique_name_in_owner = true
+script = ExtResource("9_rwuho")
+
+[node name="EquipmentComponent" type="Node" parent="Components" unique_id=1475511491]
+script = ExtResource("10_yhksc")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1478500671]
+
+[node name="PauseMenu" parent="PauseMenu" unique_id=76372218 node_paths=PackedStringArray("ui") instance=ExtResource("2_70wo7")]
+z_index = 5
+ui = NodePath("../../UI")

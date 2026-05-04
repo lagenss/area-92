@@ -1,0 +1,57 @@
+[gd_scene format=4 uid="uid://xnqgpwgc8m3j"]
+
+[ext_resource type="Texture2D" uid="uid://bkp4odk4gv0q6" path="res://assets/pc/pc_Image_0.png" id="1_h6603"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmdqj"]
+resource_name = "Material.002"
+cull_mode = 2
+albedo_texture = ExtResource("1_h6603")
+roughness = 0.82111454
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ab0d6"]
+_surfaces = [{
+"aabb": AABB(0.82151335, 0.063223824, -0.03209102, 1.2522438, 2.5070283, 2.9539375),
+"format": 34896613377,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAwACAAEABAADAAEAAAAEAAEABAAFAAMABgAAAAIABAAHAAUABAAAAAcABQAIAAMAAwAIAAIABQAHAAgACQAAAAYACQAHAAAABgACAAoACQAGAAoACgACAAgACwAHAAkACQAKAAsACwAIAAcACgAIAAsA"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray("vv7+/wAAAAC+/gAA//8AAL7+///+/wAAQQEAAP//AAC+/gAAAAAAAEEBAAAAAAAA///+/2YMAABAAf7/AAAAAEAB/v/+/wAAAAD+/2YMAADV/f7/ltoAACkC/v+W2gAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ycu3x"]
+resource_name = "pc_CPU Plainde_Material_001_0"
+_surfaces = [{
+"aabb": AABB(0.82151335, 0.063223824, -0.03209102, 1.2522438, 2.5070283, 2.9539375),
+"attribute_data": PackedByteArray("SJvcVsl5YqhIm2KoyXncViqY1GF1e7GnKpixp3V71GEzuzjRsPKpHqy7qR4p8zjR93ObY8mfyJ/Jn5tj93PIn4xxMGO3n5ait58wY4xxlqJprhNT8HGx87Ot8/KTcEZT2HHyWg9yYsk3cmy42HHyWg9yU1UPcmLJDp1suDadU1VsnfJaDp1suDadYsk2nVNVbJ3yWg9yU1XYcfJaNp1TVTdybLg2nWLJDp1suA9yYsk="),
+"format": 34896613399,
+"index_count": 60,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGwAcAB0AHgAfACAAIQAiACMAJAAlACYAJAAnACUAKAApACoAKAArACkA"),
+"material": SubResource("StandardMaterial3D_cmdqj"),
+"name": "Material.002",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 44,
+"vertex_data": PackedByteArray("vv7+/wAAqiq+/gAA//+qKr7+///+/6oqvv4AAAAAqipBAQAAAACqKkAB/v/+/6oqQQEAAP//qipAAf7/AACqKgAA/v9mDP8/1f3+/5ba/z8pAv7/ltr/P////v9mDP8/vv4AAAAAAABAAf7/AAAAAEEBAAAAAAAAvv7+/wAAAABBAQAA///+f77+///+//5/vv4AAP///n9AAf7//v/+f77+AAAAAP8/QQEAAP///z++/gAA////P0EBAAAAAP8////+/2YMAAC+/v///v8AANX9/v+W2gAA///+/2YM//++/v7/AAD//77+///+////KQL+/5ba//9AAf7/AAD//wAA/v9mDP//KQL+/5baAABAAf7//v8AAEAB/v8AAAAAAAD+/2YMAAC+/v7/AAAAAP///v9mDAAAQAH+/wAAAADV/f7/ltoAAEAB/v/+/wAAKQL+/5baAAC+/v///v8AAKoqqiqqKqoqqiqqKqoqqipVVaqqVVWqqlVVqqpVVaqq////f////3////9/////f/9//v//f/7//3/+//9//v//f////3////9/////f///UgCjgJIAJIGzAGaBMQBhgP9//7//f/+//3//v/9//z//f/8//3//P/9//z//f/8//3//P/+/AAD/vwAA/78AAP9//7//f/+//3//v/9//7//f/+//3//v/9//7//f/+/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ab0d6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wk6ka"]
+size = Vector3(0.2741394, 0.65478516, 0.55859375)
+
+[node name="PC" type="Node3D" unique_id=1448801434]
+
+[node name="pc" type="StaticBody3D" parent="." unique_id=917559217]
+
+[node name="CPU Plainde_Material_001_0" type="MeshInstance3D" parent="pc" unique_id=518491983]
+transform = Transform3D(0.18287888, -0.12229192, -5.34555e-09, 0, -9.616506e-09, 0.22, -0.12229192, -0.18287888, -7.99389e-09, 0, 0, 0)
+mesh = SubResource("ArrayMesh_ycu3x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pc" unique_id=2067218590]
+transform = Transform3D(0.83004147, 0, 0.55770165, 0, 1, 0, -0.55770165, 0, 0.83004147, 0.10385288, 0.32055664, -0.41980538)
+shape = SubResource("BoxShape3D_wk6ka")

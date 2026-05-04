@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://crtdriyph8luy"]
+
+[ext_resource type="PackedScene" uid="uid://c0hapq3rpoyud" path="res://prefabs/Player.tscn" id="1_kcdkh"]
+[ext_resource type="Script" uid="uid://0g5fwxredeig" path="res://scenes/compile/garbage_compiler.gd" id="1_l8tmp"]
+[ext_resource type="PackedScene" uid="uid://dodrbsw4xs6y0" path="res://prefabs/Speaker.tscn" id="2_64m3v"]
+[ext_resource type="PackedScene" uid="uid://gvc2hwlax7kq" path="res://prefabs/HeavyDoor.tscn" id="3_amrhd"]
+[ext_resource type="FontFile" uid="uid://bvqk5ugx53xqf" path="res://assets/fonts/BoldPixels.ttf" id="3_r3mkk"]
+[ext_resource type="PackedScene" uid="uid://d03qxpyh1sl8m" path="res://prefabs/static/WallLamp.tscn" id="4_unriq"]
+[ext_resource type="PackedScene" uid="uid://bk8iaaasu6api" path="res://prefabs/static/Camera.tscn" id="5_l8tmp"]
+[ext_resource type="PackedScene" uid="uid://bfe3iie5km8fi" path="res://prefabs/DocumentEater.tscn" id="6_amrhd"]
+[ext_resource type="PackedScene" uid="uid://bla2d78afnf1k" path="res://prefabs/static/WallLong.tscn" id="7_unriq"]
+
+[node name="GarbageCompiler" type="Node3D" unique_id=1348288973]
+script = ExtResource("1_l8tmp")
+
+[node name="Player" parent="." unique_id=797351770 instance=ExtResource("1_kcdkh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5954669, 0, 1.3227895)
+
+[node name="LoadingScreen" type="CanvasLayer" parent="Player" unique_id=1779793533]
+layer = 10
+
+[node name="Screen" type="Control" parent="Player/LoadingScreen" unique_id=763988079]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Player/LoadingScreen/Screen" unique_id=549661058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Loading" type="RichTextLabel" parent="Player/LoadingScreen/Screen" unique_id=901079701]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.551
+anchor_top = 0.873
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.24798584
+offset_top = 0.29595947
+offset_right = -42.0
+offset_bottom = -3.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("3_r3mkk")
+theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/bold_font_size = 32
+theme_override_font_sizes/bold_italics_font_size = 32
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "[shake]LOADING..."
+horizontal_alignment = 2
+
+[node name="Speaker" parent="." unique_id=1375457783 instance=ExtResource("2_64m3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8259029, 0, -2.4753256)
+
+[node name="HeavyDoor" parent="." unique_id=492724812 instance=ExtResource("3_amrhd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.364279, 0, -3.3477044)
+
+[node name="WallLamp" parent="." unique_id=307843624 instance=ExtResource("4_unriq")]
+transform = Transform3D(1, 0, 0, 0, 0.98063177, -0.19586056, 0, 0.19586056, 0.98063177, -1.4257891, 1.2948841, -2.420721)
+
+[node name="Camera" parent="." unique_id=288715665 instance=ExtResource("5_l8tmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3633795, 0, -0.7819202)
+
+[node name="DocumentEater" parent="." unique_id=194718998 instance=ExtResource("6_amrhd")]
+transform = Transform3D(0.58073187, 0.66716146, -0.46652558, -0.7542743, 0.6565594, 0, 0.30630177, 0.35188827, 0.8845077, -3.1861124, 0.7861228, -1.3987978)
+
+[node name="WallLong" parent="." unique_id=1085487159 instance=ExtResource("7_unriq")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -3.4067848, 0, 2.9578993)

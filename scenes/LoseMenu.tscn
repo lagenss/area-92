@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://pd1s47sl2wcw"]
+
+[ext_resource type="Script" uid="uid://cq7ryne5tyhu4" path="res://scripts/lose_menu.gd" id="1_pg7ml"]
+[ext_resource type="FontFile" uid="uid://co24w3eu7uivt" path="res://assets/fonts/Perfect DOS VGA 437 Win.ttf" id="2_oua1s"]
+[ext_resource type="AudioStream" uid="uid://0yxat66c25hs" path="res://assets/sounds/static-white-noise.wav" id="3_oua1s"]
+
+[node name="LoseMenu" type="Control" unique_id=64290209]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pg7ml")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=11407469]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="." unique_id=1928113548]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.5
+offset_top = 720.0
+offset_right = 209.5
+offset_bottom = 1324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=753242092]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_oua1s")
+theme_override_font_sizes/font_size = 32
+text = "OOPS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer" unique_id=1240538525]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_oua1s")
+theme_override_font_sizes/font_size = 48
+text = "
+
+YOU LOST
+
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer" unique_id=2119000215]
+texture_filter = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_oua1s")
+theme_override_font_sizes/font_size = 32
+text = "Would you like to
+restart?"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Label" type="Label" parent="." unique_id=1995526573]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_oua1s")
+theme_override_font_sizes/font_size = 32
+text = "> PRESS E TO EXIT   > PRESS R TO RETRY"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=296829942]
+stream = ExtResource("3_oua1s")
+volume_db = -25.0
+pitch_scale = 0.35

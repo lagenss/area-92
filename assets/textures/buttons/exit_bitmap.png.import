@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://b4wrwg8pybce5"
+path="res://.godot/imported/exit_bitmap.png-aec0f9ca0b68ed2b7d7e97501cb00ba7.res"
+
+[deps]
+
+source_file="res://assets/textures/buttons/exit_bitmap.png"
+dest_files=["res://.godot/imported/exit_bitmap.png-aec0f9ca0b68ed2b7d7e97501cb00ba7.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

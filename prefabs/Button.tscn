@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bxgohhhkyvqbg"]
+
+[ext_resource type="Script" uid="uid://cuftgmyd65hsn" path="res://scripts/button.gd" id="1_1eh7k"]
+[ext_resource type="PackedScene" uid="uid://iov3tni1000y" path="res://prefabs/interfaces/Interactable.tscn" id="1_4q5j6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gbu6h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4q5j6"]
+albedo_color = Color(3.4413488e-06, 0.69061935, 0.08767279, 1)
+metallic_specular = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1eh7k"]
+
+[node name="Button" type="StaticBody3D" unique_id=1307301359]
+script = ExtResource("1_1eh7k")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=539036843]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2049936336]
+transform = Transform3D(0.68, 0, 0, 0, 0.085, 0, 0, 0, 0.68, 0, 0, 0)
+shape = SubResource("CylinderShape3D_gbu6h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1070149887]
+transform = Transform3D(0.68, 0, 0, 0, 0.085, 0, 0, 0, 0.68, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_4q5j6")
+mesh = SubResource("CylinderMesh_1eh7k")
+
+[node name="Interactable" parent="." unique_id=1660525004 instance=ExtResource("1_4q5j6")]
+unique_name_in_owner = true
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

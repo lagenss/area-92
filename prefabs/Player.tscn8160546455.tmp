@@ -1,0 +1,292 @@
+[gd_scene format=3 uid="uid://c0hapq3rpoyud"]
+
+[ext_resource type="Script" uid="uid://daenxmjotbouq" path="res://scripts/player/player.gd" id="1_fjjwp"]
+[ext_resource type="Texture2D" uid="uid://cmot2hvlgflrn" path="res://assets/crossh_center.png" id="2_1nynx"]
+[ext_resource type="Script" uid="uid://wua8u1j504w6" path="res://scripts/player/sub_viewport_container.gd" id="2_8mk5r"]
+[ext_resource type="PackedScene" uid="uid://xxa01hdnu4nj" path="res://scenes/menu/PauseMenu.tscn" id="2_70wo7"]
+[ext_resource type="Script" uid="uid://8pk4aj3ani3r" path="res://scripts/player/components/movement_component.gd" id="2_glu7e"]
+[ext_resource type="Texture2D" uid="uid://xbt5ra6uosqa" path="res://assets/crossh_interact.png" id="3_64pgi"]
+[ext_resource type="Script" uid="uid://dyd3g6ow8aqp4" path="res://scripts/player/components/rotate_component.gd" id="3_ay6yh"]
+[ext_resource type="Script" uid="uid://dc8l4wxe54igm" path="res://scripts/player/components/component.gd" id="4_64pgi"]
+[ext_resource type="Shader" uid="uid://lb5nsnx5mvbv" path="res://shaders/retro.gdshader" id="4_634ti"]
+[ext_resource type="Script" uid="uid://co8ope6se27cy" path="res://scripts/player/components/wobble_component.gd" id="4_p3xyx"]
+[ext_resource type="Script" uid="uid://dkgedn6xv61hx" path="res://scripts/player/dialogue.gd" id="5_beuee"]
+[ext_resource type="Script" uid="uid://b25ekb5manpo5" path="res://fpstracker.gd" id="6_632n6"]
+[ext_resource type="FontFile" uid="uid://bvqk5ugx53xqf" path="res://assets/fonts/BoldPixels.ttf" id="7_sf8ex"]
+[ext_resource type="Script" uid="uid://dql4esdn0tmgr" path="res://scripts/player/components/interact_component.gd" id="8_0ep8a"]
+[ext_resource type="Script" uid="uid://bn38dwrgtdkkd" path="res://scripts/player/components/inventory_component.gd" id="9_rwuho"]
+[ext_resource type="Script" uid="uid://7talccbcgaqj" path="res://scripts/player/components/equipment_component.gd" id="10_yhksc"]
+[ext_resource type="Texture2D" uid="uid://b528o8vg387po" path="res://assets/textures/propsdoc.png" id="16_1y3c5"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bl74i"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fjjwp"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_beuee"]
+shader = ExtResource("4_634ti")
+shader_parameter/fish_intensity = 0.666000031635
+shader_parameter/exposure = 0.950000021375
+shader_parameter/contrast = 1.1110000290225
+shader_parameter/saturation = 0.666000031635
+shader_parameter/pixel_factor = 2.0
+shader_parameter/enable_posterize = true
+shader_parameter/color_levels = 16.0
+shader_parameter/dither_strength = 0.400000019
+shader_parameter/chrom_aberration = 0.066000003135
+shader_parameter/vignette_strength = 0.7770000369075
+shader_parameter/grain_strength = 0.2
+shader_parameter/tint_color = Vector3(0.95, 1.115, 0.9)
+shader_parameter/tint_strength = 0.15
+shader_parameter/viewport_size_override = Vector2(0, 0)
+
+[node name="Player" type="CharacterBody3D" unique_id=797351770]
+floor_snap_length = 0.3
+script = ExtResource("1_fjjwp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1374831431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_bl74i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1939475648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_fjjwp")
+
+[node name="Head" type="Node3D" parent="." unique_id=955852585]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4867326, 0)
+
+[node name="Eyes" type="Node3D" parent="Head" unique_id=1679504480]
+unique_name_in_owner = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Head/Eyes" unique_id=2012362710]
+unique_name_in_owner = true
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+script = ExtResource("2_8mk5r")
+
+[node name="SubViewport" type="SubViewport" parent="Head/Eyes/SubViewportContainer" unique_id=631847377]
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+
+[node name="MainCamera" type="Camera3D" parent="Head/Eyes/SubViewportContainer/SubViewport" unique_id=1734717664]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4867326, 0)
+fov = 78.0
+far = 100.0
+
+[node name="InteractRaycast" type="RayCast3D" parent="Head/Eyes/SubViewportContainer/SubViewport/MainCamera" unique_id=1643894890]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+target_position = Vector3(0, -1.805, 0)
+collision_mask = 3
+
+[node name="Shader" type="ColorRect" parent="Head/Eyes/SubViewportContainer/SubViewport/MainCamera" unique_id=510536137]
+z_index = -5
+material = SubResource("ShaderMaterial_beuee")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Head/Eyes" unique_id=609935329]
+remote_path = NodePath("../SubViewportContainer/SubViewport/MainCamera")
+
+[node name="Hand" type="Marker3D" parent="Head/Eyes" unique_id=1863056152]
+unique_name_in_owner = true
+transform = Transform3D(0.25, 0, 0, 0, 0.24882086, 0.024252417, 0, -0.024252417, 0.24882086, 0.113016784, -0.12140882, -0.18175225)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Head" unique_id=1416133265]
+current = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=398483594]
+
+[node name="CrosshairHolder" type="Control" parent="UI" unique_id=1327300149]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CrossI" type="TextureRect" parent="UI/CrosshairHolder" unique_id=1341291863]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_1nynx")
+
+[node name="CrossC" type="TextureRect" parent="UI/CrosshairHolder" unique_id=2031038069]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_64pgi")
+
+[node name="Dialogue" type="RichTextLabel" parent="UI/CrosshairHolder" unique_id=516660670]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.785
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.3199768
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/default_color = Color(0.91997313, 0.93364066, 6.160736e-06, 1)
+theme_override_colors/font_outline_color = Color(0.033853278, 0.033853278, 0.033853274, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("7_sf8ex")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Lorem ipsum dolor sit amet"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 2
+script = ExtResource("5_beuee")
+
+[node name="FPSTRACKER" type="Label" parent="UI/CrosshairHolder" unique_id=1062022495]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("6_632n6")
+
+[node name="InteractStatus" type="Label" parent="UI" unique_id=281171471]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 8.5
+offset_right = 20.0
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_sf8ex")
+horizontal_alignment = 1
+
+[node name="Components" type="Node" parent="." unique_id=1050772825]
+script = ExtResource("4_64pgi")
+
+[node name="MovementComponent" type="Node" parent="Components" unique_id=1579565858]
+script = ExtResource("2_glu7e")
+
+[node name="RotateComponent" type="Node" parent="Components" unique_id=1900804039]
+script = ExtResource("3_ay6yh")
+
+[node name="WobbleComponent" type="Node" parent="Components" unique_id=601852493]
+script = ExtResource("4_p3xyx")
+
+[node name="InteractComponent" type="Node" parent="Components" unique_id=1781901376]
+unique_name_in_owner = true
+script = ExtResource("8_0ep8a")
+
+[node name="InventoryComponent" type="Node" parent="Components" unique_id=1654005461]
+unique_name_in_owner = true
+script = ExtResource("9_rwuho")
+
+[node name="EquipmentComponent" type="Node" parent="Components" unique_id=1475511491]
+unique_name_in_owner = true
+script = ExtResource("10_yhksc")
+
+[node name="NoteUI" type="CanvasLayer" parent="." unique_id=275654906]
+unique_name_in_owner = true
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="NoteUI" unique_id=792822841]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.19607843)
+
+[node name="TextureRect" type="TextureRect" parent="NoteUI" unique_id=272623314]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.24800001
+anchor_top = 0.066
+anchor_right = 0.75200003
+anchor_bottom = 0.934
+offset_left = -0.1960144
+offset_top = -0.26800156
+offset_right = 0.19598389
+offset_bottom = 0.26800537
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_1y3c5")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="NoteUI" unique_id=1312398966]
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -28.0
+offset_right = 20.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_sf8ex")
+theme_override_font_sizes/font_size = 24
+text = "[E] Close"
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1478500671]
+
+[node name="PauseMenu" parent="PauseMenu" unique_id=76372218 node_paths=PackedStringArray("ui") instance=ExtResource("2_70wo7")]
+z_index = 5
+ui = NodePath("../../UI")

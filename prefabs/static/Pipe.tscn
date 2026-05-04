@@ -1,0 +1,58 @@
+[gd_scene format=4 uid="uid://bigmnams8g36o"]
+
+[ext_resource type="Texture2D" uid="uid://dadaoe68rg5yj" path="res://assets/interpipe_Image_0.png" id="1_g0dcy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f2pxt"]
+resource_name = "Tubes"
+cull_mode = 2
+albedo_texture = ExtResource("1_g0dcy")
+texture_filter = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kyyab"]
+_surfaces = [{
+"aabb": AABB(-0.3, -0.3, -3.5, 0.6, 0.6, 4),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgADAAUABgAEAAAABQADAAcABgAIAAQABQAHAAkACgAIAAYACQAHAAsACgAMAAgACQALAA0ADgAMAAoADQALAA8ADgAPAAwADQAPAA4A"),
+"name": "Tubes",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/3//////AACB2oHaAAAAAIHagdr//wAA////fwAAAAD/f///AAAAAP///3///wAAfSWB2v//AACB2n0lAAAAAH0lgdoAAAAAgdp9Jf//AAAAAP9///8AAP9/AAAAAAAAAAD/fwAAAAD/fwAA//8AAH0lfSX//wAAfSV9JQAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3v432"]
+resource_name = "interpipe_Tube4_Tubes_0"
+_surfaces = [{
+"aabb": AABB(-0.3, -0.3, -3.5, 0.6, 0.6, 4),
+"attribute_data": PackedByteArray("rvsQaewM9nWu+/Z17Azcgq773ILsDBBprvsqXOwMKlyu+0RP7AxET677XULsDF1Crvt3NewMdzWu+5Eo7AyRKK77qxvsDKsb"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAgADAAQAAAAFAAEABgAFAAAABgAHAAUACAAHAAYACAAJAAcACgAJAAgACgALAAkADAALAAoADAANAAsADgANAAwADgAPAA0AEAAPAA4AEAARAA8A"),
+"material": SubResource("StandardMaterial3D_f2pxt"),
+"name": "Tubes",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/3//////qiqB2oHaAABUFoHagdr//1QW////fwAAAAD///9///8AAP9///8AAKoqfSWB2v//Ajp9JYHaAAACOgAA/3////8/AAD/fwAA/z99JX0l//8COn0lfSUAAAI6/38AAP//qir/fwAAAACqKoHafSX//1QWgdp9JQAAVBb///9///8AAP///38AAAAAqaqqqgS19ZUEtfWV/7//f/+//3+qqqqq/pwAxv6cAMb/f////3/+/wFG/+IBRv/iqipU1aoqVNX2FfrK9hX6yv+//3//v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kyyab")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_g0dcy"]
+height = 2.7926025
+radius = 0.21142578
+
+[node name="Pipe" type="Node3D" unique_id=1613930131]
+
+[node name="interpipe" type="StaticBody3D" parent="." unique_id=1444509864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3390524, 0, -3.5966876)
+
+[node name="Tube4_Tubes_0" type="MeshInstance3D" parent="interpipe" unique_id=1135316851]
+transform = Transform3D(0.6952534, 0, 0, 0, 0.6952535, 0, 0, 0, 0.6952535, 1.3905067, 0, 4.8667746)
+mesh = SubResource("ArrayMesh_3v432")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interpipe" unique_id=1839336881]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 1.395361, -0.00034550205, 3.823606)
+shape = SubResource("CylinderShape3D_g0dcy")

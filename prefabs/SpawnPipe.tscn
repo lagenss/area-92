@@ -1,0 +1,92 @@
+[gd_scene format=4 uid="uid://e7fgojlyyima"]
+
+[ext_resource type="Texture2D" uid="uid://dadaoe68rg5yj" path="res://assets/interpipe_Image_0.png" id="1_6v1q2"]
+[ext_resource type="Script" uid="uid://cybhlyldowexf" path="res://scripts/spawn_pipe.gd" id="1_hikum"]
+[ext_resource type="AudioStream" uid="uid://clmg0cx2w8q" path="res://assets/sounds/pneumo.mp3" id="3_8d2hp"]
+[ext_resource type="AudioStream" uid="uid://co5cnuifbesh4" path="res://assets/sounds/glass-breaking.mp3" id="4_64j8q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hikum"]
+resource_name = "Tubes"
+cull_mode = 2
+albedo_texture = ExtResource("1_6v1q2")
+texture_filter = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kyyab"]
+_surfaces = [{
+"aabb": AABB(-0.3, -0.3, -3.5, 0.6, 0.6, 4),
+"format": 34896613377,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAAAEAAEAAgADAAUABgAEAAAABQADAAcABgAIAAQABQAHAAkACgAIAAYACQAHAAsACgAMAAgACQALAA0ADgAMAAoADQALAA8ADgAPAAwADQAPAA4A"),
+"name": "Tubes",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("/3//////AACB2oHaAAAAAIHagdr//wAA////fwAAAAD/f///AAAAAP///3///wAAfSWB2v//AACB2n0lAAAAAH0lgdoAAAAAgdp9Jf//AAAAAP9///8AAP9/AAAAAAAAAAD/fwAAAAD/fwAA//8AAH0lfSX//wAAfSV9JQAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8d2hp"]
+resource_name = "interpipe_Tube4_Tubes_0"
+_surfaces = [{
+"aabb": AABB(-0.3, -0.3, -3.5, 0.6, 0.6, 4),
+"attribute_data": PackedByteArray("rvsQaewM9nWu+/Z17Azcgq773ILsDBBprvsqXOwMKlyu+0RP7AxET677XULsDF1Crvt3NewMdzWu+5Eo7AyRKK77qxvsDKsb"),
+"format": 34896613399,
+"index_count": 48,
+"index_data": PackedByteArray("AAABAAIAAgABAAMAAgADAAQAAAAFAAEABgAFAAAABgAHAAUACAAHAAYACAAJAAcACgAJAAgACgALAAkADAALAAoADAANAAsADgANAAwADgAPAA0AEAAPAA4AEAARAA8A"),
+"material": SubResource("StandardMaterial3D_hikum"),
+"name": "Tubes",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 18,
+"vertex_data": PackedByteArray("/3//////qiqB2oHaAABUFoHagdr//1QW////fwAAAAD///9///8AAP9///8AAKoqfSWB2v//Ajp9JYHaAAACOgAA/3////8/AAD/fwAA/z99JX0l//8COn0lfSUAAAI6/38AAP//qir/fwAAAACqKoHafSX//1QWgdp9JQAAVBb///9///8AAP///38AAAAAqaqqqgS19ZUEtfWV/7//f/+//3+qqqqq/pwAxv6cAMb/f////3/+/wFG/+IBRv/iqipU1aoqVNX2FfrK9hX6yv+//3//v/9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kyyab")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6v1q2"]
+size = Vector3(0.62213135, 0.05316162, 4.033203)
+
+[node name="SpawnPipe" type="Node3D" unique_id=1249798084]
+script = ExtResource("1_hikum")
+
+[node name="interpipe" type="Node3D" parent="." unique_id=1801850595]
+transform = Transform3D(1, 0, 0, 0, -4.3711385e-08, -0.99999994, 0, 0.99999994, -4.3711385e-08, -1.4, 3.6, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="interpipe" unique_id=1917238216]
+
+[node name="Tube4_Tubes_0" type="MeshInstance3D" parent="interpipe/StaticBody3D" unique_id=1135316851]
+transform = Transform3D(0.94, 0, 0, 0, 0.93999994, 3.5527137e-15, 0, -3.5527137e-15, 0.93999994, 1.3905067, 0, 4.866774)
+mesh = SubResource("ArrayMesh_8d2hp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interpipe/StaticBody3D" unique_id=571978540]
+transform = Transform3D(0.94, 0, 0, 0, 0.9399782, 2.629008e-13, 0, -2.629008e-13, 0.9399782, 1.3919697, -0.27570626, 3.4411788)
+shape = SubResource("BoxShape3D_6v1q2")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="interpipe/StaticBody3D" unique_id=216012581]
+transform = Transform3D(-4.1088704e-08, 0.9399782, -4.108749e-08, -0.9399998, -4.1087738e-08, 4.1087745e-08, 4.1088697e-08, 4.108748e-08, 0.939978, 1.0953753, 0.008671405, 3.441178)
+shape = SubResource("BoxShape3D_6v1q2")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="interpipe/StaticBody3D" unique_id=56513687]
+transform = Transform3D(-4.1088704e-08, 0.9399782, -4.108749e-08, -0.9399997, -4.108773e-08, 4.1087738e-08, 4.1088693e-08, 4.108747e-08, 0.9399779, 1.677716, 0.008671403, 3.4411776)
+shape = SubResource("BoxShape3D_6v1q2")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="interpipe/StaticBody3D" unique_id=1430333710]
+transform = Transform3D(0.94, 0, 0, 0, 0.9399781, 2.629008e-13, 0, -2.629008e-13, 0.9399781, 1.3919697, 0.27710235, 3.4411786)
+shape = SubResource("BoxShape3D_6v1q2")
+
+[node name="Marker3D" type="Marker3D" parent="." unique_id=662340790]
+unique_name_in_owner = true
+transform = Transform3D(0.9929779, 0.116096035, -0.022728743, -0.1183, 0.9744787, -0.19077891, 0, 0.19212806, 0.98137, 0, 0, 0)
+
+[node name="Pneumo" type="AudioStreamPlayer3D" parent="." unique_id=2051278772]
+unique_name_in_owner = true
+stream = ExtResource("3_8d2hp")
+volume_db = -20.299
+unit_size = 15.22
+max_db = -8.06
+
+[node name="Glass" type="AudioStreamPlayer3D" parent="." unique_id=401919170]
+unique_name_in_owner = true
+stream = ExtResource("4_64j8q")
+volume_db = -21.492
+max_db = -2.095

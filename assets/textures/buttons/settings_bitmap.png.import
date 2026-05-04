@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://citg62cruscj0"
+path="res://.godot/imported/settings_bitmap.png-2bcd53b930fd143f546564a55b81a9ac.res"
+
+[deps]
+
+source_file="res://assets/textures/buttons/settings_bitmap.png"
+dest_files=["res://.godot/imported/settings_bitmap.png-2bcd53b930fd143f546564a55b81a9ac.res"]
+
+[params]
+
+create_from=1
+threshold=0.5

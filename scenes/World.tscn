@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bbdkww43qx06t"]
+
+[ext_resource type="Texture2D" uid="uid://suc0qx84lpam" path="res://assets/asphlt.png" id="1_kqs1s"]
+[ext_resource type="PackedScene" uid="uid://c0hapq3rpoyud" path="res://prefabs/Player.tscn" id="2_32lhk"]
+[ext_resource type="PackedScene" uid="uid://bxgohhhkyvqbg" path="res://prefabs/Button.tscn" id="3_7g83o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32lhk"]
+size = Vector3(40, 1, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7g83o"]
+albedo_color = Color(6.2569975e-06, 0.9329221, 0, 1)
+albedo_texture = ExtResource("1_kqs1s")
+metallic_specular = 0.16
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d1c63"]
+material = SubResource("StandardMaterial3D_7g83o")
+size = Vector3(40, 1, 40)
+
+[sub_resource type="Environment" id="Environment_7g83o"]
+
+[node name="World" type="Node3D" unique_id=1248296461]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=811637311]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1566032996]
+shape = SubResource("BoxShape3D_32lhk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1328679963]
+mesh = SubResource("BoxMesh_d1c63")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=252563249]
+transform = Transform3D(0.83355814, 0.42973235, 0.34714678, 0, -0.62839764, 0.7778923, 0.5524317, -0.6484184, -0.523806, 0, 6.7351923, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." unique_id=797351770 instance=ExtResource("2_32lhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3423672, 0.5, 2.114708)
+
+[node name="Button" parent="." unique_id=1364531925 instance=ExtResource("3_7g83o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82399, 0.5941446, -2.4647703)
+available = false
+
+[node name="Button2" parent="." unique_id=1307301359 instance=ExtResource("3_7g83o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8232384, 0.585, -4.5647073)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1989290234]
+environment = SubResource("Environment_7g83o")

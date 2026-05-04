@@ -1,0 +1,135 @@
+[gd_scene format=3 uid="uid://bfe3iie5km8fi"]
+
+[ext_resource type="Texture2D" uid="uid://b2fqvscvkfj0p" path="res://assets/wall_angled_rn_wall_tex.png" id="1_olr05"]
+[ext_resource type="Script" uid="uid://cihqky2a4hajj" path="res://scripts/document_eater.gd" id="1_s4p5y"]
+[ext_resource type="Texture2D" uid="uid://b528o8vg387po" path="res://assets/textures/propsdoc.png" id="2_olr05"]
+[ext_resource type="Script" uid="uid://ckvrdjea1bpdu" path="res://scripts/interfaces/interactable.gd" id="3_ikmrt"]
+[ext_resource type="AudioStream" uid="uid://8dta8bywl30" path="res://assets/sounds/paper.mp3" id="5_d8u6x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4p5y"]
+albedo_color = Color(0.8627451, 0.8745098, 0.8627451, 1)
+albedo_texture = ExtResource("1_olr05")
+uv1_scale = Vector3(0.449, 0.155, 0.449)
+uv1_offset = Vector3(0.245, 2.28, 0.325)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_olr05"]
+size = Vector3(0.6, 0.045, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_olr05"]
+size = Vector3(0.44503784, 0.07055664, 0.6111908)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikmrt"]
+albedo_texture = ExtResource("2_olr05")
+metallic_specular = 0.0
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_s4p5y"]
+size = Vector2(0.21, 0.29)
+
+[sub_resource type="Animation" id="Animation_s4p5y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.048406273, 0.025008015, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d8u6x"]
+resource_name = "give_document"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.02, 0.04),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.69),
+"transitions": PackedFloat32Array(1.6817931, 1.6245052),
+"update": 0,
+"values": [Vector3(0.048406273, 0.025008015, 0), Vector3(0.6987678, 0.025008015, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dh22h"]
+_data = {
+&"RESET": SubResource("Animation_s4p5y"),
+&"give_document": SubResource("Animation_d8u6x")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s4p5y"]
+size = Vector3(0.4802246, 0.18843842, 0.75801086)
+
+[node name="DocumentEater" type="Node3D" unique_id=194718998]
+script = ExtResource("1_s4p5y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=539549653]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.085, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=1870616979]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.0012131762, 0.00087876245, -8.988753e-05)
+material_override = SubResource("StandardMaterial3D_s4p5y")
+mesh = SubResource("BoxMesh_olr05")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=555186667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015914917, 0.00793457, -0.0011367798)
+shape = SubResource("BoxShape3D_olr05")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1266356579]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 0.048406273, 0.025008015, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_ikmrt")
+mesh = SubResource("PlaneMesh_s4p5y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=846076937]
+unique_name_in_owner = true
+root_node = NodePath("../MeshInstance3D")
+libraries/ = SubResource("AnimationLibrary_dh22h")
+
+[node name="InteractArea" type="StaticBody3D" parent="." unique_id=1145397729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06000036, 0)
+collision_layer = 2
+
+[node name="Interactable" type="Node" parent="InteractArea" unique_id=1409332365]
+unique_name_in_owner = true
+script = ExtResource("3_ikmrt")
+metadata/_custom_type_script = "uid://ckvrdjea1bpdu"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=329969633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017520428, -0.0006980896, -0.002571106)
+shape = SubResource("BoxShape3D_s4p5y")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1391571215]
+stream = ExtResource("5_d8u6x")
+volume_db = -19.104
